@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>kino-slides Demo</title>
+
+    <script src="../platform/platform.js"></script>
+    <link rel="import" href="kinoscribe.html">
+    <style>
+        kino-slide .slide{
+            display: block;
+            width: 800px;
+            height: 600px;
+            padding: 40px 60px;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, .3);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+            color: rgb(102, 102, 102);
+            text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: -1px;
+        }
+    </style>
+</head>
+<body unresolved>
+
+<kino-transition-left-to-right-emphasis></kino-transition-left-to-right-emphasis>
+<kino-transition-top-to-bottom-emphasis></kino-transition-top-to-bottom-emphasis>
+<kino-transition-box></kino-transition-box>
+<kino-transition-3d-spiral></kino-transition-3d-spiral>
+<kino-transition-file-cabinet></kino-transition-file-cabinet>
+
+<kino-pres transition="kino-transition-box">
+    <kino-slide x="1000">
+        <section class="slide">
+            Slide 1
+        </section>
+    </kino-slide>
+
+    <kino-slide x="2500" z="-1000">
+        <section class="slide">
+            Slide 2
+        </section>
+    </kino-slide>
+
+    <kino-slide x="4000" z="-2000" scale="3">
+        <section class="slide">
+            Slide 3
+        </section>
+    </kino-slide>
+
+    <kino-slide x="5500" z="-3000" rotateZ="45">
+        <section class="slide">
+            Slide 4
+        </section>
+    </kino-slide>
+
+    <kino-slide x="7000"  rotateX="90" rotateY="90">
+        <section class="slide">
+            Slide 5
+        </section>
+
+    </kino-slide>
+    <kino-slide x="8500" z="-1000" >
+        <section class="slide">
+            Slide 6
+        </section>
+    </kino-slide>
+</kino-pres>
+<!--
+<kino-pres transition="kino-transition-box">
+    <kino-slide x="100" rotateY="90"  activeRotateY="0" activeZ="400">
+        <section class="slide">
+            <div>
+            Slide 1
+            </div>
+            <img width="400px" src="http://fc09.deviantart.net/fs71/f/2011/100/f/2/cat_png_by_dbszabo1-d3dn2c8.png"/>
+        </section>
+    </kino-slide>
+
+    <kino-slide x="200" rotateY="90"  activeRotateY="0" activeZ="400">
+        <section class="slide">
+            <div>
+                Slide 2
+            </div>
+            <img width="400px" src="http://fc03.deviantart.net/fs49/f/2009/205/e/4/FREE_CAT_PNG_by_AbsurdWordPreferred.png">
+        </section>
+    </kino-slide>
+
+    <kino-slide x="300" rotateY="90"  activeRotateY="0" activeZ="400">
+        <section class="slide">
+            <div>
+                Slide 3
+            </div>
+            <img width="400px" src="http://fc02.deviantart.net/fs70/f/2012/171/7/0/png_cat_by_eross_666-d5459oe.png">
+        </section>
+    </kino-slide>
+
+    <kino-slide x="400" rotateY="90" activeRotateY="0" activeZ="400">
+        <section class="slide">
+            <div>
+                Slide 4
+            </div>
+            <img width="400px" src="http://pngimg.com/upload/cat_PNG100.png"/>
+        </section>
+    </kino-slide>
+
+    <kino-slide x="500" rotateY="90"  activeRotateY="0" activeZ="400">
+        <section class="slide">
+            <div>
+                Slide 5
+            </div>
+            <img width="400px" src="http://www.wpclipart.com/animals/cats/cat_photos/cat_face_striped_tabby.png"/>
+        </section>
+
+    </kino-slide>
+    <kino-slide x="600" rotateY="90"  activeRotateY="0" activeZ="400">
+        <section class="slide">
+            <div>
+                Slide 6
+            </div>
+            <img width="400px" src="http://www.petreetpetfood.com/img/cat.png"/>
+        </section>
+    </kino-slide>
+</kino-pres>
+-->
+
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!--
+Copyright (c) 2014 Synerzip. All rights reserved.
+This code may only be used under the Apache 2.0 style license found at http://www.apache.org/licenses/LICENSE-2.0
+Code distributed by Synerzip as part of its showcase apps built on Polymer https://github.com/Synerzip/kinoscribe
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+
+<!--
+Element providing Blank Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-blank>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-subtitle>
+            Author: Rohit Ghatol
+        </kino-subtitle>
+    </layout-blank>
+</kino-slide>
+</kino-pres>
+
+@element layout-blank
+@blurb Element providing blank layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-blank">
+
+    <template>
+
+        <style >
+            :host {
+                display: block;
+                height: 100%;
+                position: relative;
+            }
+            #layout {
+                height: 100%;
+                width: 98%;
+            }
+        </style>
+        <section id="layout">
+            <content></content>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-blank', {
+        });
+    </script>
+
+</polymer-element>
+
+<!--
+Element providing Content only Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-contentonly>
+        <kino-content>
+            For this layout there is no title, only contents are shown.
+        </kino-content>
+    </layout-contentonly>
+</kino-slide>
+</kino-pres>
+
+@element layout-contentonly
+@blurb Element providing content only layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-contentonly" extends="layout-blank" >
+
+    <template>
+
+        <style >
+            #layout #content {
+                width:100%;
+                height: 80%;
+                margin: auto;
+            }
+        </style>
+        <section id="layout">
+            <section id="content">
+                <content select="kino-content"></content>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-contentonly', {
+        });
+    </script>
+
+</polymer-element>
+
+<!--
+Element providing Title Only Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-titlecontent>
+        <kino-title>
+            Slide 1
+        </kino-title>
+    </layout-titlecontent>
+</kino-slide>
+</kino-pres>
+
+@element layout-titleonly
+@extends layout-blank
+@blurb Element providing title only layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-titleonly" extends="layout-blank">
+
+    <template>
+
+        <style >
+            #layout #title {
+                width: 100%;
+                margin: auto;
+                text-align: center;
+            }
+        </style>
+        <section id="layout">
+            <section id="title">
+                <content select="kino-title"></content>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-titleonly', {
+        });
+    </script>
+
+</polymer-element>
+
+<!--
+Element providing Title and Content Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-titlecontent>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-content>
+            Contents of the slide.
+        </kino-content>
+    </layout-titlecontent>
+</kino-slide>
+</kino-pres>
+
+@element layout-titlecontent
+@extends layout-titleonly
+@blurb Element providing title and content layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-titlecontent" extends="layout-titleonly">
+
+    <template>
+
+        <style >
+            #layout #content {
+                width:100%;
+                height: 80%;
+                margin: auto;
+            }
+        </style>
+        <section id="layout">
+            <section id="title">
+                <content select="kino-title"></content>
+            </section>
+            <section id="content">
+                <content select="kino-content"></content>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-titlecontent', {
+        });
+    </script>
+
+</polymer-element>
+
+
+<!--
+Element providing Title and Two Content Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-twocontent>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-content>
+            Contents of the slide.
+        </kino-content>
+    </layout-twocontent>
+</kino-slide>
+</kino-pres>
+
+@element layout-twocontent
+@extends layout-titlecontent
+@blurb Element providing title and two content layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-twocontent" extends="layout-titlecontent">
+
+    <template>
+
+        <style >
+            #layout #title {
+                width: 100%;
+                margin: auto;
+                text-align: center;
+            }
+
+            #layout #contentleft {
+                width:48%;
+                float: left;
+                height: 80%;
+                margin: auto;
+                padding-right: 1%;
+            }
+            #layout #contentright {
+                width:48%;
+                float: left;
+                height: 80%;
+                margin: auto;
+                padding-left: 1%;
+            }
+        </style>
+        <section id="layout">
+            <section id="title">
+                <content select="kino-title"></content>
+            </section>
+            <section id="contentleft">
+                <content select="kino-content.left"></content>
+            </section>
+            <section id="contentright">
+                <content select="kino-content.right"></content>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-twocontent', {
+        });
+    </script>
+
+</polymer-element>
+
+<!--
+Element providing Title Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-title>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-subtitle>
+            Author: Rohit Ghatol
+        </kino-subtitle>
+    </layout-title>
+</kino-slide>
+</kino-pres>
+
+@element layout-title
+@extends layout-blank
+@blurb Element providing title layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-title" extends="layout-blank">
+
+    <template>
+
+        <style >
+            #layout #title {
+                width: 80%;
+                margin: auto;
+                margin-top: 30%;
+                border-bottom: 1px solid #AAA;
+                text-align: center;
+            }
+            #layout #subtitle {
+                width: 80%;
+                height: 15%;
+                margin: auto;
+                text-align: center;
+                font-size: larger;
+            }
+        </style>
+        <section id="layout">
+            <section id="title">
+                <b><content select="kino-title"></content></b>
+            </section>
+            <section id="subtitle">
+                <content select="kino-subtitle"></content>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-title', {
+        });
+    </script>
+
+</polymer-element>
+
+<!--
+Element providing Section Header Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-sectionheader>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-subtitle>
+            Author: Rohit Ghatol
+        </kino-subtitle>
+    </layout-sectionheader>
+</kino-slide>
+</kino-pres>
+
+@element layout-sectionheader
+@extends layout-blank
+@blurb Element providing Section Header layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-sectionheader" extends="layout-blank">
+    <template>
+        <style >
+            #layout {
+                margin-top: 40%;
+            }
+            #layout #title {
+                width: 80%;
+                margin: auto;
+                text-align: center;
+            }
+            #layout #subtitle {
+                width: 80%;
+                height: 15%;
+                margin-top: 30%;
+                border-bottom: 1px solid #AAA;
+                margin: auto;
+                text-align: center;
+                font-size: larger;
+            }
+        </style>
+        <section id="layout">
+            <section id="subtitle">
+                <content select="kino-subtitle"></content>
+            </section>
+            <section id="title">
+                <b><content select="kino-title"></content></b>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-sectionheader', {
+        });
+    </script>
+
+</polymer-element>
+
+
+<!--
+Element title element for kinoscribe's kino-title
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-titlecontent>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-content>
+            <ul>
+                <li>Point 1</li>
+                <li>Point 2</li>
+                <li>Point 3</li>
+            </ul>
+        </kino-content>
+    </layout-titlecontent>
+</kino-slide>
+</kino-pres>
+
+@element kino-title
+@blurb Element title element for kinoscribe's kino-layout
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+
+<polymer-element name="kino-title">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                height: 100%;
+                width: 100%;
+                font-size: 40px;
+                font-weight: bold;
+                padding-bottom: 2%;
+            }
+
+        </style>
+
+        <section>
+            <content></content>
+        </section>
+
+    </template>
+
+    <script>
+
+        Polymer('kino-title', {
+        });
+
+    </script>
+
+</polymer-element>
+
+<!--
+Element subtitle element for kinoscribe's kino layout
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-title>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-subtitle>
+            Author: Rohit Ghatol
+        </kino-subtitle>
+    </layout-title>
+</kino-slide>
+</kino-pres>
+
+@element kino-subtitle
+@blurb Element subtitle element for kinoscribe's kino layout
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+
+<polymer-element name="kino-subtitle">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                height: 100%;
+                width: 100%;
+            }
+
+        </style>
+
+        <section>
+            <content></content>
+        </section>
+
+    </template>
+
+    <script>
+
+        Polymer('kino-subtitle', {
+        });
+
+    </script>
+
+</polymer-element>
+
+<!--
+Element content element for kinoscribe's kino-content
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-titlecontent>
+        <kino-title>
+            Slide 1
+        </kino-title>
+        <kino-content>
+            <ul>
+                <li>Point 1</li>
+                <li>Point 2</li>
+                <li>Point 3</li>
+            </ul>
+        </kino-content>
+    </layout-titlecontent>
+</kino-slide>
+</kino-pres>
+
+@element kino-content
+@blurb Element content element for kinoscribe's kino-content
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+
+<polymer-element name="kino-content">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                padding-top: 2%;
+            }
+
+        </style>
+
+        <section>
+            <content></content>
+        </section>
+
+    </template>
+
+    <script>
+
+        Polymer('kino-content', {
+        });
+
+    </script>
+
+</polymer-element>

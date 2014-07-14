@@ -1,0 +1,221 @@
+<!--
+Copyright (c) 2014 Synerzip. All rights reserved.
+This code may only be used under the Apache 2.0 style license found at http://www.apache.org/licenses/LICENSE-2.0
+Code distributed by Synerzip as part of its showcase apps built on Polymer https://github.com/Synerzip/kinoscribe
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+
+
+
+<polymer-element name="kino-shape"
+                 attributes="type left top width height zIndex strokeColor fillColor fillOpacity strokeOpacity">
+    <template>
+        <style>
+            :host {
+
+            }
+
+            #shape {
+
+            }
+        </style>
+        <div id="shape">
+            <content></content>
+        </div>
+    </template>
+    <script src="preset-shapes.js"></script>
+    <script src="guide-formula-evaluator.js"></script>
+    <script>
+
+        Polymer('kino-shape', {
+            /**
+             * Type of Shape
+             *
+             * @attribute type
+             * @type string
+             * @default "heart"
+             */
+            type: "heart",
+            /**
+             * X Co ordinate of the Shape
+             *
+             * @attribute left
+             * @type number
+             * @default 100
+             */
+            left: 100,
+            /**
+             * Y Co ordinate of the Shape
+             *
+             * @attribute top
+             * @type number
+             * @default 100
+             */
+            top: 100,
+            /**
+             * Width of the Shape
+             *
+             * @attribute width
+             * @type number
+             * @default 100
+             */
+            width: 100,
+            /**
+             * Height of the Shape
+             *
+             * @attribute height
+             * @type number
+             * @default 100
+             */
+            height: 100,
+            /**
+             * zIndex of the Shape
+             *
+             * @attribute zIndex
+             * @type number
+             * @default 100
+             */
+            zIndex: 100,
+            /**
+             * Stroke Color for the Shape
+             *
+             * @attribute strokeColor
+             * @type string
+             * @default "black"
+             */
+            strokeColor: "black",
+            /**
+             * Fill Color for the Shape
+             *
+             * @attribute fillColor
+             * @type string
+             * @default "blue"
+             */
+            fillColor: "blue",
+
+            /**
+             * Stroke Opacity for the Shape
+             *
+             * @attribute strokeOpacity
+             * @type num
+             * @default 1.0
+             */
+            strokeOpacity: 1.0,
+            /**
+             * Fill Opacity for the Shape
+             *
+             * @attribute fillOpacity
+             * @type num
+             * @default 1.0
+             */
+            fillOpacity: 1.0,
+
+
+            attached: function () {
+
+                var presetShapes = new PresetShapes();
+                var shapeInfo = presetShapes.getShapeInfo(this.type);
+
+
+                var map = {
+                    l: 0,
+                    t: 0,
+                    h: this.height,
+                    w: this.width
+                };
+
+                var evaluator = new GuideFormulaEvaluator();
+
+                var avs = shapeInfo.avLst;
+                if(avs!=null){
+                    for (var index = 0; index < avs.length; index++) {
+                        var gd = avs[index];
+                        var val = evaluator.evaluate(gd.fmla, map);
+                        map[gd.name] = val;
+                    }
+                }
+
+                var gds = shapeInfo.gdLst;
+                for (var index = 0; index < gds.length; index++) {
+                    var gd = gds[index];
+                    var val = evaluator.evaluate(gd.fmla, map);
+                    map[gd.name] = val;
+                }
+
+
+                var svgPaths = "";
+                for (var pindex = 0; pindex < shapeInfo.pathLst.length; pindex++) {
+
+                    var pathChild = shapeInfo.pathLst[pindex];
+                    var path =pathChild.path;
+                    svgPaths += "<path d=\"";
+                    for (var index = 0; index < path.length; index++) {
+                        console.log("-- " + index);
+                        var command = path[index];
+
+
+                        if (command.command == "moveTo") {
+                            var point = command.pts[0];
+                            var x, y;
+
+                            var x = map[point.x] != null ? map[point.x] : evaluator.builtinGuides[point.x](map);
+                            var y = map[point.y] != null ? map[point.y] : evaluator.builtinGuides[point.y](map);
+
+
+                            svgPaths = svgPaths + " \n M \n\t" + x + "," + y + "\n";
+                        }
+                        else if (command.command == "lnTo") {
+                            var point = command.pts[0];
+                            var x, y;
+
+                            var x = map[point.x] != null ? map[point.x] : evaluator.builtinGuides[point.x](map);
+                            var y = map[point.y] != null ? map[point.y] : evaluator.builtinGuides[point.y](map);
+
+
+                            svgPaths = svgPaths + " \n L \n\t" + x + "," + y + "\n";
+                        }
+                        else if (command.command == "cubicBezTo") {
+                            svgPaths = svgPaths + " C ";
+                            var points = command.pts;
+
+
+                            for (var cindex = 0; cindex < points.length; cindex++) {
+                                console.log("  -- " + pindex);
+                                console.log("calcuating x,y for cubicBez");
+                                var point = points[cindex];
+                                var x = map[point.x] != null ? map[point.x] : evaluator.builtinGuides[point.x](map);
+                                var y = map[point.y] != null ? map[point.y] : evaluator.builtinGuides[point.y](map);
+                                svgPaths = svgPaths + "\n\t " + x + "," + y;
+                            }
+
+                            svgPaths = svgPaths + "\n";
+
+                        }
+
+                    }
+                    svgPaths += "\"";
+                    svgPaths += " stroke=\"" + this.strokeColor + "\" fill=\"" + this.fillColor + "\" fill-opacity=\"" + this.fillOpacity + "\" stroke-opacity=\"" + this.strokeOpacity + "\"";
+                    svgPaths += " />";
+                }
+                console.log(svgPaths);
+                var svg = "<svg>" + svgPaths + "</svg>";
+
+                var shape = this.$.shape;
+                shape.style.position = "absolute";
+                shape.style.left = this.left + "px";
+                shape.style.top = this.top + "px";
+                shape.style.width = this.width + "px";
+                shape.style.height = this.height + "px";
+                shape.style.zIndex = this.zIndex;
+
+
+                shape.innerHTML = svg;
+
+            }
+        });
+    </script>
+
+</polymer-element>
+

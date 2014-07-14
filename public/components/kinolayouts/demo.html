@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>kino-slides Demo</title>
+
+    <script src="../platform/platform.js"></script>
+    <link rel="import" href="kinolayouts.html">
+    <style>
+        .slide{
+            border:1px solid blue;
+            display:block;
+            height:800px;
+        }
+    </style>
+</head>
+<body unresolved >
+
+    <section class="slide">
+        <layout-titlecontent>
+            <kino-title>In love with traditional slides?</kino-title>
+            <kino-content>We also support <b>Power Point Style Layouts</b><br>
+                <ul>
+                    <li>Title</li>
+                    <li>Title Content</li>
+                    <li>Title Only</li>
+                    <li>Section Header</li>
+                    <li>Two Content</li>
+                    <li>Content only</li>
+                    <li>etc.</li>
+                </ul>
+            </kino-content>
+        </layout-titlecontent>
+    </section>
+    <section class="slide">
+        <layout-title>
+            <kino-title>Title for the slide</kino-title>
+            <kino-subtitle>Subtitle.</kino-subtitle>
+        </layout-title>
+    </section>
+    <section class="slide">
+        <layout-titleonly>
+            <kino-title>Only Title Layout</kino-title>
+        </layout-titleonly>
+    </section>
+    <section class="slide">
+        <layout-sectionheader>
+            <kino-subtitle>Section Info</kino-subtitle>
+            <kino-title>Section Name</kino-title>
+        </layout-sectionheader>
+    </section>
+    <section class="slide">
+        <layout-contentonly>
+            <kino-content>
+                Content only Layout, only contents can be added.
+            </kino-content>
+        </layout-contentonly>
+    </section>
+    <section class="slide">
+        <layout-twocontent>
+            <kino-title>Slide title</kino-title>
+            <kino-content class="left">Left content
+                <ul>
+                    <li>point 1</li>
+                    <li>point 2</li>
+                </ul>
+            </kino-content>
+            <kino-content class="right">Right content
+                <ul>
+                    <li>point 1</li>
+                    <li>point 2</li>
+                    <li>point 3</li>
+                    <li>point 4</li>
+                </ul>
+            </kino-content>
+        </layout-twocontent>
+    </section>
+
+</body>
+</html>
