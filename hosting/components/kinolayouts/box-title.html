@@ -1,0 +1,66 @@
+<!--
+Copyright (c) 2014 Synerzip. All rights reserved.
+This code may only be used under the Apache 2.0 style license found at http://www.apache.org/licenses/LICENSE-2.0
+Code distributed by Synerzip as part of its showcase apps built on Polymer https://github.com/Synerzip/kinoscribe
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element title element for kinoscribe's box-title
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-titlecontent>
+        <box-title>
+            Slide 1
+        </box-title>
+        <box-content>
+            <ul>
+                <li>Point 1</li>
+                <li>Point 2</li>
+                <li>Point 3</li>
+            </ul>
+        </box-content>
+    </layout-titlecontent>
+</kino-slide>
+</kino-pres>
+
+@element box-title
+@blurb Element title element for kinoscribe's kino-layout
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+
+<polymer-element name="box-title">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                height: 100%;
+                width: 100%;
+                font-size: 40px;
+                font-weight: bold;
+                padding-bottom: 2%;
+            }
+
+        </style>
+
+        <section>
+            <content></content>
+        </section>
+
+    </template>
+
+    <script>
+
+        Polymer('box-title', {
+        });
+
+    </script>
+
+</polymer-element>

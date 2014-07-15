@@ -1,0 +1,67 @@
+<!--
+Copyright (c) 2014 Synerzip. All rights reserved.
+This code may only be used under the Apache 2.0 style license found at http://www.apache.org/licenses/LICENSE-2.0
+Code distributed by Synerzip as part of its showcase apps built on Polymer https://github.com/Synerzip/kinoscribe
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="layout-blank.html">
+<!--
+Element providing Title Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-title-slide>
+        <box-title>
+            Slide 1
+        </box-title>
+        <box-subtitle>
+            Author: Rohit Ghatol
+        </box-subtitle>
+    </layout-title-slide>
+</kino-slide>
+</kino-pres>
+
+@element layout-title-slide
+@extends layout-blank
+@blurb Element providing title layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-title-slide" extends="layout-blank">
+
+    <template>
+
+        <style >
+            #layout #title {
+                width: 80%;
+                margin: auto;
+                margin-top: 30%;
+                border-bottom: 1px solid #AAA;
+                text-align: center;
+            }
+            #layout #subtitle {
+                width: 80%;
+                height: 15%;
+                margin: auto;
+                text-align: center;
+                font-size: larger;
+            }
+        </style>
+        <section id="layout">
+            <section id="title">
+                <b><content select="box-title"></content></b>
+            </section>
+            <section id="subtitle">
+                <content select="box-subtitle"></content>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-title-slide', {
+        });
+    </script>
+
+</polymer-element>

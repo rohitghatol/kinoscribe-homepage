@@ -1,0 +1,62 @@
+<!--
+Copyright (c) 2014 Synerzip. All rights reserved.
+This code may only be used under the Apache 2.0 style license found at http://www.apache.org/licenses/LICENSE-2.0
+Code distributed by Synerzip as part of its showcase apps built on Polymer https://github.com/Synerzip/kinoscribe
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="layout-blank.html">
+<!--
+Element providing Content only Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-content-only>
+        <box-content>
+            For this layout there is no title, only contents are shown.
+        </box-content>
+    </layout-content-only>
+</kino-slide>
+</kino-pres>
+
+@element layout-contentonly
+@blurb Element providing content only layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-content-only" extends="layout-blank" >
+
+
+
+    <template>
+
+        <style >
+            #layout{
+                width:100%;
+                height:100%;
+                padding:20px;
+            }
+
+            #layout #content {
+                width:100%;
+                height: 80%;
+
+            }
+
+
+        </style>
+        <section id="layout">
+            <section id="content">
+                <content select="box-content"></content>
+            </section>
+        </section>
+    </template>
+
+    <script>
+        Polymer('layout-content-only', {
+        });
+    </script>
+
+</polymer-element>

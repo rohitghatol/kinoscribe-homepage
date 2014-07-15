@@ -1,0 +1,57 @@
+<!--
+Copyright (c) 2014 Synerzip. All rights reserved.
+This code may only be used under the Apache 2.0 style license found at http://www.apache.org/licenses/LICENSE-2.0
+Code distributed by Synerzip as part of its showcase apps built on Polymer https://github.com/Synerzip/kinoscribe
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+
+<!--
+Element providing Blank Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-blank>
+        <box-title>
+            Slide 1
+        </box-title>
+        <box-subtitle>
+            Author: Rohit Ghatol
+        </box-subtitle>
+    </layout-blank>
+</kino-slide>
+</kino-pres>
+
+@element layout-blank
+@blurb Element providing blank layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-blank">
+
+    <template>
+
+        <style >
+            :host {
+                display: block;
+                height: 100%;
+                position: relative;
+            }
+            #layout {
+                height: 100%;
+                width: 98%;
+            }
+        </style>
+        <section id="layout">
+            <content></content>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-blank', {
+        });
+    </script>
+
+</polymer-element>

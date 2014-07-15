@@ -1,0 +1,83 @@
+<!--
+Copyright (c) 2014 Synerzip. All rights reserved.
+This code may only be used under the Apache 2.0 style license found at http://www.apache.org/licenses/LICENSE-2.0
+Code distributed by Synerzip as part of its showcase apps built on Polymer https://github.com/Synerzip/kinoscribe
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="layout-title-content.html">
+<!--
+Element providing Title and Two Content Layout for kinoscribe kino-slide elements
+
+##### Example
+
+<kino-pres>
+<kino-slide x="100" y="100" z="-100" rotateX="30" rotateY="30" rotateZ="0" scale=3">
+    <layout-two-content>
+        <box-title>
+            Slide 1
+        </box-title>
+        <box-content>
+            Contents of the slide.
+        </box-content>
+    </layout-two-content>
+</kino-slide>
+</kino-pres>
+
+@element layout-two-content
+@extends layout-title-content
+@blurb Element providing title and two content layout for kinoscribe kino-slide elements
+@status alpha
+@homepage http://github.com/Synerzip/kinoscribe
+-->
+<polymer-element name="layout-two-content" extends="layout-titlecontent">
+
+    <template>
+
+        <style >
+
+            #layout{
+                width:100%;
+                height:100%;
+                padding:20px;
+            }
+
+            #layout #title {
+                width: 100%;
+                margin: auto;
+                text-align: center;
+            }
+
+            #layout #contentleft {
+                width:48%;
+                float: left;
+                height: 80%;
+                margin: auto;
+                padding-right: 1%;
+            }
+            #layout #contentright {
+                width:48%;
+                float: left;
+                height: 80%;
+                margin: auto;
+                padding-left: 1%;
+            }
+        </style>
+        <section id="layout">
+            <section id="title">
+                <content select="box-title"></content>
+            </section>
+            <section id="contentleft">
+                <content select="box-content.left"></content>
+            </section>
+            <section id="contentright">
+                <content select="box-content.right"></content>
+            </section>
+        </section>
+    </template>
+    <script>
+        Polymer('layout-two-content', {
+        });
+    </script>
+
+</polymer-element>
