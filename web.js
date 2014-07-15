@@ -4,7 +4,9 @@ var cors = require('cors');
 var app = express();
 
 app.use(cors());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/website'));
+app.use(express.static(__dirname + '/hosting' +
+    ''));
 
 
 var port = Number(process.env.PORT || 8080);
