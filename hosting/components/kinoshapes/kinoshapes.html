@@ -10,7 +10,7 @@ Code distributed by Synerzip as part of its showcase apps built on Polymer https
 
 
 <polymer-element name="kino-shape"
-                 attributes="type left top width height zIndex strokeColor fillColor fillOpacity strokeOpacity">
+                 attributes="type left top width height rotation zIndex strokeColor fillColor fillOpacity strokeOpacity">
     <template>
         <style>
             :host {
@@ -70,6 +70,14 @@ Code distributed by Synerzip as part of its showcase apps built on Polymer https
              * @default 100
              */
             height: 100,
+            /**
+             * Rotation of the Shape
+             *
+             * @attribute rotation
+             * @type number
+             * @default 0
+             */
+            rotation: 0,
             /**
              * zIndex of the Shape
              *
@@ -144,6 +152,8 @@ Code distributed by Synerzip as part of its showcase apps built on Polymer https
                     map[gd.name] = val;
                 }
 
+                var svgGroup = '<g>';
+
 
                 var svgPaths = "";
                 for (var pindex = 0; pindex < shapeInfo.pathLst.length; pindex++) {
@@ -152,7 +162,7 @@ Code distributed by Synerzip as part of its showcase apps built on Polymer https
                     var path =pathChild.path;
                     svgPaths += "<path d=\"";
                     for (var index = 0; index < path.length; index++) {
-                        console.log("-- " + index);
+
                         var command = path[index];
 
 
@@ -182,8 +192,6 @@ Code distributed by Synerzip as part of its showcase apps built on Polymer https
 
 
                             for (var cindex = 0; cindex < points.length; cindex++) {
-                                console.log("  -- " + pindex);
-                                console.log("calcuating x,y for cubicBez");
                                 var point = points[cindex];
                                 var x = map[point.x] != null ? map[point.x] : evaluator.builtinGuides[point.x](map);
                                 var y = map[point.y] != null ? map[point.y] : evaluator.builtinGuides[point.y](map);
@@ -199,8 +207,9 @@ Code distributed by Synerzip as part of its showcase apps built on Polymer https
                     svgPaths += " stroke=\"" + this.strokeColor + "\" fill=\"" + this.fillColor + "\" fill-opacity=\"" + this.fillOpacity + "\" stroke-opacity=\"" + this.strokeOpacity + "\"";
                     svgPaths += " />";
                 }
-                console.log(svgPaths);
-                var svg = "<svg>" + svgPaths + "</svg>";
+                svgGroup+=svgPaths+"</g>";
+                // console.log(svgGroup);
+                var svg = "<svg>" + svgGroup + "</svg>";
 
                 var shape = this.$.shape;
                 shape.style.position = "absolute";
@@ -209,6 +218,9 @@ Code distributed by Synerzip as part of its showcase apps built on Polymer https
                 shape.style.width = this.width + "px";
                 shape.style.height = this.height + "px";
                 shape.style.zIndex = this.zIndex;
+
+                shape.style.transform="rotateZ("+this.rotation+"deg)";
+                shape.style.webkitTransform="rotateZ("+this.rotation+"deg)";
 
 
                 shape.innerHTML = svg;
