@@ -175,7 +175,244 @@
                 <div class="col-lg-4">
                     <p>More over KinoScribe is meant to be extensible. If you have a great idea about an Cool Transition or Layout or Any Tools around Presentation, go ahead and write your own Custom Element. Your Custom Element or JavaScript code can interact with KinoScribe using Attributes and Events</p>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>Basics</h3>
+                    <hr class="star-light">
+                </div>
+                <div class="col-lg-12 text-left">
 
+                    <h4>Step 1</h4>
+                    <p>Include platform.js script and import kinoscribe web component</p>
+
+                    <iframe width="100%" height="250" src="http://jsfiddle.net/rohitghatol/QAjw5/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+                    <h4>Step 2</h4>
+                    <p>Use &lt;kino-pres&gt; as presentation tag and use &lt;kino-slide&;gt; as slide tag</p>
+                    <iframe width="100%" height="450" src="http://jsfiddle.net/rohitghatol/mDV5V/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+                    <h4>Complete Example</h4>
+                    <p>Here is a complete example of how to use basic KinoScribe Presentation. In side Result Tab and then use left and right arrow keys to navigate</p>
+                    <iframe width="100%" height="500" src="http://jsfiddle.net/rohitghatol/LASBB/embedded/result,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>Attributes</h3>
+                    <hr class="star-light">
+                </div>
+                <div class="col-lg-12 text-center">
+                    <h4>&lt;kino-pres&gt; Attributes</h4>
+                    <div class="table-responsive">
+                    <table class="table table-bordered">
+
+                        <tr class="warning">
+                            <td>Attribute</td>
+                            <td>Default Value</td>
+                            <td>Description</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                currentSlide
+                            </td>
+                            <td>
+                                1
+                            </td>
+                            <td class="text-left">
+                                Read currentSlide to know the currently shown slide.Change currentSlide to transition to another slide
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                slides
+                            </td>
+                            <td>
+
+                            </td>
+                            <td class="text-left">
+                                Read slides to know total number of slides in the kino-pres element.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                transition
+                            </td>
+                            <td>
+
+                            </td>
+                            <td class="text-left">
+                                Overrides kino-slide's attributes with 3d layout provided by given transition.
+                                <br><br>
+                                Requires user to include corresponding kino-transition web component on the page. That is
+                                if user wants to assign transition to "kino-transition-box", there needs to be an element
+                                named &lt;kino-transition-box/&gt;.
+                                <br><br>
+                                Following are options for transitions -
+                                <table class="table-bordered table-condensed ">
+                                    <tr>
+                                        <td>
+                                            kino-transition-left-to-right
+                                        </td>
+                                        <td>
+                                            Left to Right Transition
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            kino-transition-left-to-right-emphasis
+                                        </td>
+                                        <td>
+                                            Left to Right Transition with 3D Effect
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            kino-transition-top-to-bottom
+                                        </td>
+                                        <td>
+                                            Left to Right Transition
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            kino-transition-top-to-bottom-emphasis
+                                        </td>
+                                        <td>
+                                            Left to Right Transition with 3D Effect
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            kino-transition-box
+                                        </td>
+                                        <td>
+                                            Transitions as a 3D Box
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            kino-transition-3d-spiral
+                                        </td>
+                                        <td>
+                                            Transitions as a 3D Spiral
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            kino-transition-file-cabinet
+                                        </td>
+                                        <td>
+                                            Transitions as a 3D file cabinet
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br><br>
+                                Note - You can create and add your own custom transition.
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <h4>&lt;kino-slide&gt; Attributes</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+
+                            <tr class="warning">
+                                <td>Attribute</td>
+                                <td>Default Value</td>
+                                <td>Description</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    x
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td class="text-left">
+                                    X Position of Slide
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    y
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td class="text-left">
+                                    Y Position of Slide
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    z
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td class="text-left">
+                                    Z Position of Slide
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    rotateX
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td class="text-left">
+                                    Rotation along X Axis
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    rotateY
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td class="text-left">
+                                    Rotation along X Axis
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    rotationZ
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td class="text-left">
+                                    Rotation along X Axis
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    scale
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td class="text-left">
+                                    zoom in (positive value) or zoom out (negative value) levels
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-12 text-left">
+
+
+                    <h4>Complete Example</h4>
+                    <p>Here is a complete example of how to use basic KinoScribe Presentation. In side Result Tab and then use left and right arrow keys to navigate</p>
+                    <iframe width="100%" height="500" src="http://jsfiddle.net/rohitghatol/LASBB/embedded/result,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+                </div>
             </div>
         </div>
     </section>
