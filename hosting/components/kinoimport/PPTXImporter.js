@@ -5,14 +5,18 @@ function PPTXImporter(file, container) {
         "title": "layout-title-slide",
         "obj":"layout-title-content",
         "twoObj":"layout-two-content",
-        "titleOnly":"layout-title-only"
+        "titleOnly":"layout-title-only",
+        "secHead":"layout-section-header",
+        "blank":"layout-blank"
     }
 
     var renderMap={
         "layout-title-slide":renderLayoutTitleSlide,
         "layout-title-content":renderLayoutTitleContent,
         "layout-two-content":renderLayoutTwoContent,
-        "layout-title-only":renderLayoutTitleOnly
+        "layout-title-only":renderLayoutTitleOnly,
+        "layout-section-header":renderSectionHeader,
+        "layout-blank":renderBlankSlide
     }
 
     function _init() {
@@ -168,6 +172,33 @@ function PPTXImporter(file, container) {
 
     }
 
+    function renderSectionHeader(slide){
+
+        var layoutName = map[slide.layoutName];
+        var layoutElem = document.createElement(layoutName);
+
+        var titleBoxElem = document.createElement("box-title");
+        var subTitleBoxElem = document.createElement("box-subTitle");
+
+
+        titleBoxElem.innerHTML = slide.content.title;
+        subTitleBoxElem.innerHTML = slide.content.subTitle;
+        layoutElem.appendChild(titleBoxElem);
+        layoutElem.appendChild(subTitleBoxElem);
+
+        return layoutElem;
+
+    }
+    function renderBlankSlide(slide){
+
+        var layoutName = map[slide.layoutName];
+        var layoutElem = document.createElement(layoutName);
+
+
+
+        return layoutElem;
+
+    }
 
     _init();
     return _api;

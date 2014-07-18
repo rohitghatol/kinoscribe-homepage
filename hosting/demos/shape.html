@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>kino-slides Demo</title>
+
+    <script src="../components/platform/platform.js"></script>
+    <link rel="import" href="../components/kinoscribe/kinoscribe.html">
+    <link rel="import" href="../components/kinolayouts/kinolayouts.html">
+    <link rel="import" href="../components/kinoshapes/kinoshapes.html">
+    <style>
+        kino-slide .slide {
+            display: block;
+            width: 800px;
+            height: 600px;
+            padding: 40px 60px;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, .3);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+            color: rgb(102, 102, 102);
+            text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: -1px;
+
+        }
+
+        .header1 {
+
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 100px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+
+            letter-spacing: -1px;
+            line-height: 72px;
+            text-shadow: 1px 2px 2px grey;
+            text-align: center;
+
+            padding-top: 100px;
+
+        }
+
+        .header2 {
+
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 80px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+
+            letter-spacing: -1px;
+            line-height: 72px;
+            text-shadow: 1px 2px 2px grey;
+            text-align: center;
+            width: 100%;
+
+        }
+
+        .names {
+            font-family: 'League Gothic', Impact, sans-serif;
+            font-size: 75.61727905273438px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            text-shadow: 4px 4px 10px grey;
+        }
+
+        .padding200 {
+            padding-left: 200px;
+        }
+
+        .padding400 {
+            padding-left: 400px;
+        }
+
+        .presbox {
+
+            margin: 0 auto;
+            width: 100%;
+            padding: 100px;
+
+        }
+
+        .slidebox {
+            font-size: 32px;
+            border-radius: 5px;
+            border: 1px solid lightgrey;
+            padding: 50px;
+            text-align: center;
+            text-shadow: 1px 3px 4px grey;
+            box-shadow: 5px 5px 5px #888888;
+        }
+
+        .code {
+            font-size: 20pt;
+
+        }
+
+        .container {
+            height: 100%;
+            background: #3675A4;
+            padding: 10px;
+            border-radius: 5px
+        }
+
+
+    </style>
+</head>
+<body unresolved>
+
+
+<kino-transition-left-to-right></kino-transition-left-to-right>
+<kino-pres-controls></kino-pres-controls>
+<kino-pres transition="kino-transition-left-to-right">
+    <kino-slide>
+        <section class="slide">
+            <layout-blank>
+                <img width="100%" src="/img/showcase/shape.png"/>
+            </layout-blank>
+        </section>
+    </kino-slide>
+    <kino-slide>
+        <section class="slide">
+            <layout-title-content>
+                <box-title>Presentation Shapes</box-title>
+                <box-content>
+                    Able to render Presentation Shapes is an important step to import PPTX file into KinoScribe.
+                    Here are few shapes that we render today.
+                </box-content>
+            </layout-title-content>
+            <kino-shape type="heart" top="300" fillColor="red"></kino-shape>
+            <kino-shape type="triangle" top="300" left="300" fillColor="red"></kino-shape>
+            <kino-shape type="rtTriangle" top="450" fillColor="blue"></kino-shape>
+            <kino-shape type="rightArrow" left="300" top="450" fillColor="green"></kino-shape>
+
+        </section>
+    </kino-slide>
+    <kino-slide>
+        <section class="slide">
+            <layout-title-only>
+                <box-title>Rotation is also supported</box-title>
+
+            </layout-title-only>
+            <kino-shape type="heart" top="300" fillColor="red" rotation="30"></kino-shape>
+            <kino-shape type="triangle" top="300" left="300" fillColor="red"  rotation="-30"></kino-shape>
+            <kino-shape type="rtTriangle" top="450" fillColor="blue"  rotation="90"></kino-shape>
+            <kino-shape type="rightArrow" left="300" top="450" fillColor="green"  rotation="180"></kino-shape>
+
+        </section>
+    </kino-slide>
+
+</kino-pres>
+
+</body>
+</html>

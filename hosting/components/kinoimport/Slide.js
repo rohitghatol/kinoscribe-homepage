@@ -68,20 +68,41 @@ function Slide(slideData,ooxmlFiles) {
         var type=xmlNode.getAttribute("type")||"";
         var parentNode = xmlNode.parentNode.parentNode.parentNode;
 
-        var result=parentNode.ownerDocument.evaluate("//a:t",parentNode,nsResolver,XPathResult.ANY_TYPE, null )
+        var spNode = getChildNode(parentNode,"p:txBody");
+        var paraNode = getChildNode(spNode,"a:p");
+        var textRunNode = getChildNode(paraNode,"a:r");
+
+        var value = textRunNode.textContent;
+
 
         var contentType=map[type];
         if(_api.content[contentType]!=null){
             //FIXME - Fragile logic
             //More than one entries found and assuming only max 2 duplicates exists
             _api.content[map[type]+"-1"]=_api.content[map[type]];
-            _api.content[map[type]+"-2"]=result.iterateNext().childNodes[0].nodeValue;
+            _api.content[map[type]+"-2"]=value;
             delete _api.content[map[type]];
         }
         else{
-            _api.content[map[type]]=result.iterateNext().childNodes[0].nodeValue;
+
+            _api.content[map[type]]=value;
         }
 
+    }
+
+
+
+    function getChildNode(spNode,nodeName){
+        var txBodyNode = null;
+        for(var index=0;index<spNode.children.length;index++){
+            var childNode = spNode.children[index];
+            if(childNode.nodeName==nodeName){
+                txBodyNode = childNode;
+                break;
+            }
+        }
+
+        return txBodyNode;
     }
 
     function parsePrstGeom(xmlNode){

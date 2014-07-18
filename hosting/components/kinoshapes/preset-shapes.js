@@ -6,7 +6,7 @@
 function PresetShapes(){
     //TODO - Write better code here... :p
     var xhttp=new XMLHttpRequest();
-    xhttp.open("GET","presetShapeDefinitions.xml",false);
+    xhttp.open("GET","http://www.kinoscribe.com/components/kinoshapes/presetShapeDefinitions.xml",false);
     xhttp.send();
     this.xmlDoc = xhttp.responseXML;
 
